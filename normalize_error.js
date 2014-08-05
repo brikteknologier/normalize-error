@@ -1,10 +1,13 @@
 var formatError = require('format-error').format;
+var destroyCircular = require('destroy-circular');
 module.exports = function normalizeError(err) {
   var normalized = {
     error: null,
     message: '',
     code: 0
   };
+
+  err = destroyCircular(err);
 
   if (err instanceof Error) {
     normalized.message = err.message

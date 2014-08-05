@@ -9,6 +9,7 @@
   "author": "BRIK AS <post@brik.no>",
   "license": "MIT",
   "dependencies": {
+    "destroy-circular": "^1.0.1",
     "format-error": "^1.0.0"
   }
 }

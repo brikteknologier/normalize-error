@@ -7,14 +7,15 @@ module.exports = function normalizeError(err) {
     code: 0
   };
 
-  err = destroyCircular(err);
+  serializableErr = destroyCircular(err);
 
   if (err instanceof Error) {
-    normalized.message = err.message
-    normalized.error = formatError(err);
+    normalized.message = err.toString()
+    normalized.stack = err.stack;
+    normalized.error = formatError(serializableErr);
   } else {
     if (typeof err == 'string') normalized.message = err;
-    else if (typeof err == 'object') normalized.message = err.message || err.error || JSON.stringify(err);
+    else if (typeof err == 'object') normalized.message = err.message || err.error || JSON.stringify(serializableErr);
     normalized.error = err;
   }
 

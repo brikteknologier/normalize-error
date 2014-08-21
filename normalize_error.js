@@ -7,7 +7,7 @@ module.exports = function normalizeError(err) {
     code: 0
   };
 
-  serializableErr = destroyCircular(err);
+  var serializableErr = destroyCircular(err);
 
   if (err instanceof Error) {
     normalized.message = err.toString()

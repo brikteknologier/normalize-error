@@ -21,7 +21,7 @@ module.exports = function normalizeError(err) {
 
   normalized.code = err.code || err.statusCode || 500;
   if (typeof normalized.code == 'number') normalized.statusCode = normalized.code;
-  else if (typeof err.statusCode == 'number') normalized.statusCode = err.code;
+  else if (typeof err.statusCode == 'number') normalized.statusCode = err.statusCode;
   else normalized.statusCode = 500;
 
   return normalized;
